@@ -26,7 +26,8 @@ public class LibrarianImplement implements LibrarianService {
 
     public void librarianLendsBookByFIFO(List<LibraryUser> libraryUsers){
         for (LibraryUser libraryUser : libraryUsers){
-            if (libraryUser.getRoleValue() != Role.TEACHER){
+            if (libraryUser.getRoleValue() == Role.TEACHER || libraryUser.getRoleValue() == Role.SENIOR ||
+                    libraryUser.getRoleValue() == Role.JUNIOR){
                 processBookLending(libraryUser);
             }
         }
@@ -35,7 +36,9 @@ public class LibrarianImplement implements LibrarianService {
     private void processBookLending(LibraryUser libraryUser){
         if (checkBookAvailability(libraryUser.getBook())){
             libraryUser.getBook().setNumberOfCopy(libraryUser.getBook().getNumberOfCopy() - 1);
-            System.out.printf("%-8s  %20s  %20s %20s %20s %n" , libraryUser.getFirstName() , libraryUser.getRoleValue().toString() , libraryUser.getBook().getBookTitle() , String.valueOf(libraryUser.getBook().getNumberOfCopy()), libraryUser.getBook().getAuthor());
+            System.out.printf("%-8s  %20s  %20s %20s %20s %n" , libraryUser.getFirstName() ,
+                    libraryUser.getRoleValue().toString() , libraryUser.getBook().getBookTitle() ,
+                    String.valueOf(libraryUser.getBook().getNumberOfCopy()), libraryUser.getBook().getAuthor());
 
         }else {
             System.out.println("Book Already Taken");
