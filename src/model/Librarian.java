@@ -14,4 +14,8 @@ public class Librarian extends Base{
 
     private Queue<LibraryUser> queue = new PriorityQueue<>();
 
+    @Override
+    public int compareTo(Base o) {
+        return this.getRoleValue().getRole() > o.getRoleValue().getRole() ? -1 : 1;
+    }
 }

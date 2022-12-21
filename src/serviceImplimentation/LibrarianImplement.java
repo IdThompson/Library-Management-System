@@ -3,7 +3,7 @@ package serviceImplimentation;
 import enumServer.Role;
 import interfaceService.LibrarianService;
 import model.Book;
-import model.CustomComparator;
+//import model.CustomComparator;
 import model.LibraryUser;
 
 import java.util.Iterator;
@@ -32,16 +32,19 @@ public class LibrarianImplement implements LibrarianService {
             }
         }
     }
-
+// An Exception is thrown here.
     private void processBookLending(LibraryUser libraryUser){
-        if (checkBookAvailability(libraryUser.getBook())){
-            libraryUser.getBook().setNumberOfCopy(libraryUser.getBook().getNumberOfCopy() - 1);
-            System.out.printf("%-8s  %20s  %20s %20s %20s %n" , libraryUser.getFirstName() ,
-                    libraryUser.getRoleValue().toString() , libraryUser.getBook().getBookTitle() ,
-                    String.valueOf(libraryUser.getBook().getNumberOfCopy()), libraryUser.getBook().getAuthor());
+        try{
+            if (checkBookAvailability(libraryUser.getBook())){
+                libraryUser.getBook().setNumberOfCopy(libraryUser.getBook().getNumberOfCopy() - 1);
+                System.out.printf("%-8s  %20s  %20s %20s %20s %n" , libraryUser.getFirstName() , libraryUser.getRoleValue().toString() , libraryUser.getBook().getBookTitle() , String.valueOf(libraryUser.getBook().getNumberOfCopy()), libraryUser.getBook().getAuthor());
 
-        }else {
-            System.out.println("Book Already Taken");
+            }
+        }catch(Exception e) {
+            System.out.println("There is error here: " + e.getMessage());
+        }
+        {
+//            System.out.println("Book Already Taken");
         }
     }
 

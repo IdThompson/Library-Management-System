@@ -2,7 +2,7 @@ package model;
 
 import enumServer.Role;
 
-public abstract class Base {
+public abstract class Base implements Comparable<Base> {
  private String firstName;
  private String lastName;
 

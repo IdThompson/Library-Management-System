@@ -8,4 +8,8 @@ public class LibraryUser extends Base{
     }
 
 
+    @Override
+    public int compareTo(Base o) {
+        return this.getRoleValue().getRole() > o.getRoleValue().getRole() ? -1 : 1;
+    }
 }
