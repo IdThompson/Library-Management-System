@@ -20,6 +20,7 @@ public class Main {
         fifoQueue.add(new LibraryUser("Emmanuel" , "Olukunle" , SENIOR , "1" , book1));
 
 
+
 //Below is Priority
         PriorityQueue<LibraryUser> queue = new PriorityQueue<>();
 
@@ -27,8 +28,8 @@ public class Main {
                 .forEach(System.out::println);
 
         queue.offer(new LibraryUser("Daniel" , "James" , JUNIOR , "1" , null));
-       queue.offer(new LibraryUser("Tobi" , "James" , TEACHER , "1" , book1));
-       queue.offer(new LibraryUser("Phoebe" , "Great" , SENIOR , "1" , book1));
+       queue.offer(new LibraryUser("Tobi" , "James" , TEACHER , "1" , null));
+       queue.offer(new LibraryUser("Phoebe" , "Great" , SENIOR , "1" , null));
 
         LibrarianService librarianService = new LibrarianImplement();
         librarianService.librarianLendsABookByPriority(queue);
